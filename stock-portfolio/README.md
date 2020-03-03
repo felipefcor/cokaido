@@ -1,0 +1,1 @@
+Stock app.Portfolio Kata
