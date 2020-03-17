@@ -1,4 +1,4 @@
-import app.repositories.Deposit;
+import com.lifull.bankata.repositories.Deposit;
 import org.junit.Assert;
 import org.junit.Test;
 

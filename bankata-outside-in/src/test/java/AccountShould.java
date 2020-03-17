@@ -1,9 +1,9 @@
-import app.Account;
-import app.printable.Printable;
-import app.repositories.Deposit;
-import app.repositories.TransactionRepository;
-import app.repositories.Withdrawal;
-import app.timeserver.TimeServer;
+import com.lifull.bankata.domain.Account;
+import com.lifull.bankata.infrastructure.TransactionInterface;
+import com.lifull.bankata.printable.Printable;
+import com.lifull.bankata.repositories.Deposit;
+import com.lifull.bankata.repositories.Withdrawal;
+import com.lifull.bankata.timeserver.TimeServer;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,7 +19,7 @@ public class AccountShould {
     private Printable printer;
 
     @Mock
-    private TransactionRepository repository;
+    private TransactionInterface repository;
 
     @Mock
     private TimeServer timeServer;

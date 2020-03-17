@@ -1,6 +1,5 @@
-import app.repositories.Deposit;
-import app.repositories.Transaction;
-import app.repositories.TransactionRepository;
+import com.lifull.bankata.repositories.Transaction;
+import com.lifull.bankata.inmemory.TransactionRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,7 +7,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -43,7 +41,7 @@ public class TransactionRepositoryShould {
         MockitoAnnotations.initMocks(this);
         TransactionRepository transactionRepository = new TransactionRepository();
 
-        when(transaction.toString()).thenReturn("10/01/2012 || 1000.00  ||          || ");
+        when(transactionRepository.toString()).thenReturn("10/01/2012 || 1000.00  ||          || ");
         when(newTransaction.toString()).thenReturn("13/01/2012 || 2000.00  ||          || ");
 
         when(transaction.calculateBalance(0)).thenReturn(1000);

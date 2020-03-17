@@ -1,14 +1,15 @@
 package acceptance;
 
-import app.Account;
-import app.timeserver.TimeServer;
+import com.lifull.bankata.domain.Account;
+import com.lifull.bankata.infrastructure.TransactionInterface;
+import com.lifull.bankata.timeserver.TimeServer;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import app.printable.Printable;
-import app.repositories.TransactionRepository;
+import com.lifull.bankata.printable.Printable;
+import com.lifull.bankata.inmemory.TransactionRepository;
 
 import static org.mockito.Mockito.*;
 
@@ -37,7 +38,7 @@ public class PrintStatementFeature {
     @Test
     public void print_the_bank_Statement_correctly() {
         MockitoAnnotations.initMocks(this);
-        TransactionRepository repository = new TransactionRepository();
+        TransactionInterface repository = new TransactionRepository();
         Account account = new Account(repository, printer, timeServer);
         when(timeServer.getDate()).thenReturn("10/01/2012","13/01/2012","14/01/2012");
         account.deposit(1000);

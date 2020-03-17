@@ -21,7 +21,7 @@ Products available (in-memory repository):
    - 20110: Breaking Bad - €7.00
     
 ```java
-    public class domain.ShoppingBasketService {
+    public class ShoppingBasketService {
     
         public void addItem(UserID userId, ProductID productId, int quantity) { }
         public ShoppingBasket basketFor(UserID userId) { }

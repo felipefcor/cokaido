@@ -1,5 +1,4 @@
-import app.repositories.Deposit;
-import app.repositories.Withdrawal;
+import com.lifull.bankata.repositories.Withdrawal;
 import org.junit.Assert;
 import org.junit.Test;
 
