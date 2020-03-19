@@ -1,5 +1,5 @@
 package com.lifull.bankata.controller;
 
-public class AddTransactionUse {
+public class TransactionUseCase {
     public int amount;
 }

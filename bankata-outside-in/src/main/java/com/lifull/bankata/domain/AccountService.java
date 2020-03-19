@@ -1,20 +1,17 @@
 package com.lifull.bankata.domain;
 
 import com.lifull.bankata.infrastructure.TransactionInterface;
-import com.lifull.bankata.printable.Printable;
-import com.lifull.bankata.repositories.Deposit;
-import com.lifull.bankata.repositories.Withdrawal;
+import com.lifull.bankata.domain.transaction.Deposit;
+import com.lifull.bankata.domain.transaction.Withdrawal;
 import com.lifull.bankata.timeserver.TimeServer;
 
-public class Account {
+public class AccountService {
 
     private final TransactionInterface repository;
-    private final Printable printer;
     private TimeServer timeServer;
 
-    public Account(TransactionInterface repository, Printable printer, TimeServer timeServer) {
+    public AccountService(TransactionInterface repository, TimeServer timeServer) {
         this.repository = repository;
-        this.printer = printer;
         this.timeServer = timeServer;
     }
 
@@ -27,7 +24,7 @@ public class Account {
     }
 
     public void printStatement() {
-        printer.print(repository.getStatement());
+        repository.getStatement();
     }
 }
 

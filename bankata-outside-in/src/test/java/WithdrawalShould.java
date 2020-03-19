@@ -1,4 +1,4 @@
-import com.lifull.bankata.repositories.Withdrawal;
+import com.lifull.bankata.domain.transaction.Withdrawal;
 import org.junit.Assert;
 import org.junit.Test;
 

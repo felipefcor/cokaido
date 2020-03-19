@@ -1,8 +1,7 @@
 package com.lifull.bankata.controller;
 
-import com.lifull.bankata.domain.Account;
+import com.lifull.bankata.domain.AccountService;
 import com.lifull.bankata.infrastructure.TransactionInterface;
-import com.lifull.bankata.printable.Printable;
 import com.lifull.bankata.timeserver.TimeServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TransactionController {
-    @Autowired
-    Printable printer;
-    @Autowired
+     @Autowired
     TransactionInterface repository;
     @Autowired
     TimeServer timeServer;
@@ -24,10 +21,10 @@ public class TransactionController {
     }
 
     @PostMapping(value = "/deposit", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> addDeposit(@RequestBody AddTransactionUse addTransactionUse) {
-        Account account = new Account(repository, printer, timeServer);
+    public ResponseEntity<Object> addDeposit(@RequestBody TransactionUseCase transactionUseCase) {
+        AccountService accountService = new AccountService(repository, timeServer);
         try {
-            account.deposit(addTransactionUse.amount);
+            accountService.deposit(transactionUseCase.amount);
             return new ResponseEntity<>("Deposit added correctly", HttpStatus.CREATED);
         }catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
@@ -35,10 +32,10 @@ public class TransactionController {
     }
 
     @PostMapping(value = "/withdrawal", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Object> addWithdrawal(@RequestBody AddTransactionUse addTransactionUse) {
-        Account account = new Account(repository, printer, timeServer);
+    public ResponseEntity<Object> addWithdrawal(@RequestBody TransactionUseCase transactionUseCase) {
+        AccountService accountService = new AccountService(repository, timeServer);
         try {
-            account.withdraw(addTransactionUse.amount);
+            accountService.withdraw(transactionUseCase.amount);
             return new ResponseEntity<>("Withdrawal added correctly", HttpStatus.CREATED);
         }catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);

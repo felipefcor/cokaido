@@ -1,16 +1,16 @@
-package com.lifull.bankata.inmemory;
+package com.lifull.bankata.infrastructure.inmemory;
 
 import com.lifull.bankata.infrastructure.TransactionInterface;
-import com.lifull.bankata.repositories.Transaction;
+import com.lifull.bankata.domain.transaction.Transaction;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 @Component
-public class TransactionRepository implements TransactionInterface {
+public class TransactionRepositoryInMemory implements TransactionInterface {
     private List<Transaction> transactions;
 
-    public TransactionRepository() {
+    public TransactionRepositoryInMemory() {
         this.transactions = new ArrayList<>();
     }
 
